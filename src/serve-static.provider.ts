@@ -4,6 +4,7 @@ import { HttpAdapterHost } from '@nestjs/core';
 import { AbstractLoader } from './loaders/abstract.loader.js';
 import { ExpressLoader } from './loaders/express.loader.js';
 import { NoopLoader } from './loaders/noop.loader.js';
+import { FastifyLoader } from './loaders/fastify.loader.js';
 
 export const serveStaticProvider: Provider = {
   provide: AbstractLoader,
@@ -18,7 +19,7 @@ export const serveStaticProvider: Provider = {
       httpAdapter.constructor.name === 'FastifyAdapter'
     ) {
       // Not handled right now
-      return new NoopLoader();
+      return new FastifyLoader();
     }
 
     return new ExpressLoader();

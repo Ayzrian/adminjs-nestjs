@@ -1,5 +1,6 @@
 import type { AdminJSOptions, BaseAuthProvider, CurrentAdmin } from 'adminjs';
 import { SessionOptions } from 'express-session';
+import FastifySessionPlugin from '@fastify/session';
 
 import { ExpressFormidableOptions } from './express-formidable-options.interface.js';
 
@@ -35,7 +36,7 @@ export type AdminModuleOptions = {
    * Here you might want to change the store from the default memory store to
    * something more reliable (i.e. database).
    */
-  sessionOptions?: SessionOptions,
+  sessionOptions?: SessionOptions | FastifySessionPlugin.FastifySessionOptions,
   /**
    * Flag indicating if adminjs should be initialized. Helpful in cases like turning off admin for tests.
    * Default is true.
